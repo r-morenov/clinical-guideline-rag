@@ -7,7 +7,9 @@ authors = [
     { name = "Richar Moreno", email = "312328915+r-morenov@users.noreply.github.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pydantic-settings>=2.16.3",
+]
 
 [project.scripts]
 clinical-guideline-rag = "clinical_guideline_rag:main"
