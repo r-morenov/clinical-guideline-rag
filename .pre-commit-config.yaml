@@ -1,0 +1,21 @@
+# Checks that run automatically before every commit.
+# "local" hooks use the exact tool versions from our uv.lock, so there's one source of truth.
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check
+        entry: uv run ruff check --fix   # the command to run
+        language: system                 # run it as a normal command on this machine
+        types: [python]                  # only for Python files
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
+      - id: pytest
+        name: pytest
+        entry: uv run pytest -q          # -q: quiet output
+        language: system
+        pass_filenames: false            # run the whole test suite, not file by file
+        always_run: true                 # run even if no Python file changed

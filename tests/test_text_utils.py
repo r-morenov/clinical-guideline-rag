@@ -10,12 +10,12 @@ from clinical_guideline_rag.text_utils import (
 
 
 @pytest.mark.parametrize(
-    ("raw", "expected"),                                    # the names of the two columns of the table
+    ("raw", "expected"),  # the names of the two columns of the table
     [
         ("  Chronic   kidney\n\ndisease ", "Chronic kidney disease"),
-        ("tab\tseparated", "tab separated"),                # \t is a tab character
-        ("", ""),                                           # edge case: empty text
-        ("already clean", "already clean"),                 # edge case: nothing to fix
+        ("tab\tseparated", "tab separated"),  # \t is a tab character
+        ("", ""),  # edge case: empty text
+        ("already clean", "already clean"),  # edge case: nothing to fix
     ],
 )
 def test_normalize_whitespace(raw: str, expected: str) -> None:

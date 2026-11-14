@@ -18,5 +18,16 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.7.0",
     "pytest>=9.2.0",
+    "ruff>=0.17.5",
 ]
+
+[tool.ruff]
+line-length = 100           # maximum characters per line of code
+target-version = "py312"    # write modern Python 3.12 style
+src = ["src"]               # where our own package lives (so imports are grouped correctly)
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]   # which families of checks to run
+ignore = ["E501"]                     # long lines: the formatter handles code; long comments are fine
