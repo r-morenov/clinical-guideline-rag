@@ -5,25 +5,30 @@ A modular monolith: one Python package with clear modules, one PostgreSQL databa
 ## Data flow
 
 ```mermaid
-flowchart LR
+flowchart TB
+    UI[Streamlit demo UI] --> API[FastAPI]
+    API -->|add documents| A
+    API -->|ask a question| Q
+
     subgraph Ingestion["Ingestion (one command)"]
+        direction TB
         A[Guideline PDFs<br/>listed in a manifest] --> B[Extract text per page]
         B --> C[Clean text]
         C --> D[Split into chunks]
-        D --> E[Embed chunks<br/>Ollama]
+        D --> E[Embed chunks with Ollama]
     end
-    E --> DB[(PostgreSQL + pgvector)]
+
     subgraph Answering["Question answering"]
-        Q[Question] --> QE[Embed question<br/>Ollama]
+        direction TB
+        Q[Question] --> QE[Embed question with Ollama]
         QE --> R[Retrieve similar chunks]
         R --> P[Build prompt]
-        P --> L[Local LLM<br/>Ollama]
+        P --> L[Local LLM with Ollama]
         L --> ANS[Answer + citations<br/>+ disclaimer]
     end
+
+    E --> DB[(PostgreSQL + pgvector)]
     DB --> R
-    UI[Streamlit demo UI] --> API[FastAPI]
-    API --> A
-    API --> Q
 ```
 
 ## Modules
