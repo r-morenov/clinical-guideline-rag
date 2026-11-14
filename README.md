@@ -9,3 +9,11 @@ Phase 1 of 10: foundations and design.
 
 ## Planned stack
 Python 3.12 · uv · PostgreSQL + pgvector · Ollama (local models) · FastAPI · Streamlit · LangGraph
+
+## Development
+Requirements: [uv](https://docs.astral.sh/uv/). It installs the right Python version (3.12) automatically.
+
+```bash
+uv sync          # install the exact dependencies recorded in uv.lock
+uv run pytest    # run the test suite
+```
