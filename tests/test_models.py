@@ -20,13 +20,13 @@ def test_word_count() -> None:
 @pytest.mark.parametrize(
     ("page", "chunk_index", "text"),
     [
-        (0, 0, "Some text."),     # page must start at 1
-        (1, -1, "Some text."),    # chunk_index must start at 0
-        (1, 0, "   "),            # text must not be empty
+        (0, 0, "Some text."),  # page must start at 1
+        (1, -1, "Some text."),  # chunk_index must start at 0
+        (1, 0, "   "),  # text must not be empty
     ],
 )
 def test_invalid_chunks_are_rejected(page: int, chunk_index: int, text: str) -> None:
-    with pytest.raises(ChunkValidationError):    # the test PASSES only if this error is raised
+    with pytest.raises(ChunkValidationError):  # the test PASSES only if this error is raised
         Chunk(guideline="sample", page=page, chunk_index=chunk_index, text=text)
 
 

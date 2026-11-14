@@ -6,7 +6,7 @@ def normalize_whitespace(text: str) -> str:
 
     Example: "  Chronic   kidney\n\ndisease " -> "Chronic kidney disease"
     """
-    words = text.split()    # split on ANY whitespace and drop the empty pieces
+    words = text.split()  # split on ANY whitespace and drop the empty pieces
     return " ".join(words)  # glue the pieces back together with exactly one space between them
 
 
@@ -23,4 +23,6 @@ def join_hyphenated_line_breaks(text: str) -> str:
 
     Example: "chronic kid-\nney disease" -> "chronic kidney disease"
     """
-    return text.replace("-\n", "")  # delete every "hyphen + line break" pair, so "kid-\nney" becomes "kidney"
+    return text.replace(
+        "-\n", ""
+    )  # delete every "hyphen + line break" pair, so "kid-\nney" becomes "kidney"

@@ -13,10 +13,10 @@ class ChunkValidationError(ValueError):
 class Chunk:
     """A piece of guideline text, together with where it came from."""
 
-    guideline: str     # short id of the source document, e.g. "va-dod-ckd-2025"
-    page: int          # page number in the PDF, starting at 1
-    chunk_index: int   # position of this chunk within its page, starting at 0
-    text: str          # the cleaned text itself
+    guideline: str  # short id of the source document, e.g. "va-dod-ckd-2025"
+    page: int  # page number in the PDF, starting at 1
+    chunk_index: int  # position of this chunk within its page, starting at 0
+    text: str  # the cleaned text itself
 
     def __post_init__(self) -> None:
         """Check the fields right after the chunk is created."""
